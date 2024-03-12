@@ -20,16 +20,16 @@ const MARKETING_ADDRESS: Pubkey = Pubkey::new_from_array([
     123, 45, 67, 89, 101, 112, 131, 41, 151, 61, 71, 81, 91, 102, 110, 120, 130, 140, 150, 160,
 ]);
 
-// Definir la estructura del token SAFEMARS
+// Definir la estructura del token MILEITOKEN
 #[derive(Clone, Debug, PartialEq)]
-pub struct SafeMars {
+pub struct MileiToken {
     pub total_supply: u64,
     // Otros campos necesarios para la lógica del token
 }
 
-// Implementar métodos para el token SAFEMARS
-impl SafeMars {
-    // Constructor del token SAFEMARS
+// Implementar métodos para el token MileiToken
+impl MileiToken {
+    // Constructor del token MileiToken
     pub fn new() -> Self {
         Self {
             total_supply: 1000000000, // Total de suministro inicial
@@ -192,7 +192,7 @@ pub fn process_instruction(
             let amount = u64::from_le_bytes(instruction_data[1..9].try_into().unwrap());
 
             // Procesar la transacción de compra
-            SafeMars::buy_transaction(
+            MileiToken::buy_transaction(
                 amount,
                 &mut Account::unpack(&token_account.data.borrow_mut())?,
                 &marketing_account,
@@ -213,7 +213,7 @@ pub fn process_instruction(
             let amount = u64::from_le_bytes(instruction_data[1..9].try_into().unwrap());
 
             // Procesar la transacción de venta
-            SafeMars::sell_transaction(
+            MileiToken::sell_transaction(
                 amount,
                 &mut Account::unpack(&token_account.data.borrow_mut())?,
             )?;
@@ -232,7 +232,7 @@ pub fn process_instruction(
             let amount = u64::from_le_bytes(instruction_data[1..9].try_into().unwrap());
 
             // Quemar los tokens
-            SafeMars::burn_tokens(
+            MileiToken::burn_tokens(
                 amount,
                 &mut Account::unpack(&token_account.data.borrow_mut())?,
             )?;
