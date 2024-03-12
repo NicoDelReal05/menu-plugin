@@ -20,19 +20,21 @@ const MARKETING_ADDRESS: Pubkey = Pubkey::new_from_array([
     123, 45, 67, 89, 101, 112, 131, 41, 151, 61, 71, 81, 91, 102, 110, 120, 130, 140, 150, 160,
 ]);
 
-// Definir la estructura del token MILEITOKEN
+// Definir la estructura del token MileiToken
 #[derive(Clone, Debug, PartialEq)]
 pub struct MileiToken {
     pub total_supply: u64,
+    pub image_url: String, // URL de la imagen del token
     // Otros campos necesarios para la lógica del token
 }
 
 // Implementar métodos para el token MileiToken
 impl MileiToken {
     // Constructor del token MileiToken
-    pub fn new() -> Self {
+    pub fn new(image_url: String) -> Self {
         Self {
             total_supply: 1000000000, // Total de suministro inicial
+            image_url,
             // Otros campos y configuraciones iniciales
         }
     }
@@ -56,6 +58,12 @@ impl MileiToken {
         let total_amount = amount + Self::calculate_tax_amounts(amount).0;
         if sender_account.amount < total_amount {
             return Err(ProgramError::InsufficientFunds);
+        }
+
+        // Verificar que el saldo total del comprador no exceda el límite máximo
+        let max_balance_per_wallet = 10_000_000;
+        if sender_account.amount + amount > max_balance_per_wallet {
+            return Err(ProgramError::Custom(101)); // Código de error personalizado para indicar que se alcanzó el límite máximo
         }
 
         // Transferir tokens al comprador
