@@ -1,0 +1,73 @@
+/* ---------------------------------------- */
+/* Estilos generales para el panel de cartas */
+/* ---------------------------------------- */
+
+/* Panel contenedor principal */
+.carta-digital-panel {
+    margin: 1rem 0;
+}
+
+/* Títulos dentro del panel */
+.carta-digital-panel h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #333;
+}
+
+/* Caja de contenido, por ejemplo para formularios o secciones */
+.carta-digital-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Lista de items (negocios, cartas, productos) */
+.carta-digital-list {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+}
+
+/* Botones genéricos */
+.carta-digital-button {
+    background-color: #0073aa; /* Azul estilo WP */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.carta-digital-button:hover {
+    background-color: #006799;
+}
+
+/* Mensajes de éxito */
+.carta-digital-notice-success {
+    background-color: #d7f3e3;
+    border-left: 4px solid #2bbb66;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+}
+
+/* Mensajes de error */
+.carta-digital-notice-error {
+    background-color: #fde7e7;
+    border-left: 4px solid #dc3232;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    color: #a00;
+}
+
+/* Estilos para manejar la jerarquía en la lista */
+.carta-digital-list li {
+    margin-bottom: 0.5rem;
+}
+
+.carta-digital-list li.subcategoria {
+    margin-left: 1.5rem; /* Indentación para subcategorías */
+}
+
+/* Alternativamente, puedes usar padding-left en lugar de margin-left */
+
